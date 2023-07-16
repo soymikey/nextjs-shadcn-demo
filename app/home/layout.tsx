@@ -1,8 +1,8 @@
 "use client";
-import { useLayoutEffect } from "react";
-import { useGlobalContext } from "../context/store";
-import { useRouter } from "next/navigation";
 import SidebarNav from "@/components/SidebarNav";
+import { useGlobalContext } from "@/app/context/store";
+import { useRouter } from "next/navigation";
+import { useLayoutEffect } from "react";
 
 const sidebarNavItems: ISidebarNavItem[] = [
   {
@@ -20,7 +20,7 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { username, isLogin } = useGlobalContext();
+  const { isLogin } = useGlobalContext();
   const router = useRouter();
 
   useLayoutEffect(() => {
@@ -28,13 +28,18 @@ export default function HomeLayout({
       router.replace("/");
     }
   }, [isLogin, router]);
+
   return (
-    <div className="flex ">
-      <aside className="w-1/5">
-        <h1 className="text-4xl font-bold text-center my-8">Gopher AI</h1>
-        <SidebarNav items={sidebarNavItems} />
-      </aside>
-      {children}
-    </div>
+    <>
+      {isLogin ? (
+        <div className="flex ">
+          <aside className="w-1/5">
+            <h1 className="text-4xl font-bold text-center my-8">Gopher AI</h1>
+            <SidebarNav items={sidebarNavItems} />
+          </aside>
+          {children}
+        </div>
+      ) : null}
+    </>
   );
 }
