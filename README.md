@@ -1,5 +1,27 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+## Functions
+YouTube Tutorial Video: [Link](https://www.youtube.com/watch?v=Dr4PlIMhMa8) 
+
+- [x] Stack: Next.js, TailwindCSS, Shadcn ,TypeScript
+- [x] Beautiful UI: Shadcn
+- [x] Pages:
+- Login page
+  - [x] User login - in memory and local storage
+  - [x] Username and password verification
+  - [x] If logged in , go to home page
+- Home page
+  - [x] If not logged in, go to login page
+  - [x] User Logout
+  - [x] Home Page navigation
+  - [x] Show agents on the table
+  - [x] Create/Edit Agent - modal
+  - [x] Create/Edit data verification
+- [x] Data Management: React Context
+- [x] Persistent data storage: LocalStorage
+
+
 ## Getting Started
 
 First, run the development server:
