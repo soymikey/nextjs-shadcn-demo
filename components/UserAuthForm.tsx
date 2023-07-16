@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 
 import Link from "next/link";
 import * as z from "zod";
@@ -17,6 +17,9 @@ import {
 } from "@/components/ui/form";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { useGlobalContext } from "@/app/context/store";
+import Icons from "./Icons";
+import { SIGNIN } from "@/app/constants";
 
 const formSchema = z.object({
   username: z.string().trim().min(1, {
@@ -29,6 +32,7 @@ const formSchema = z.object({
 
 function UserAuthForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const { username, isLogin, setUsername, setIsLogin } = useGlobalContext();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -39,9 +43,20 @@ function UserAuthForm() {
     },
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    router.push("/home");
+    setIsLoading(true);
+    setTimeout(() => {
+      setUsername(values.username);
+      setIsLogin(true);
+      router.push("/home");
+    }, 1000);
   }
+
+  useLayoutEffect(() => {
+    if (isLogin) {
+      router.push("/home");
+    }
+  }, [isLogin, router]);
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -74,7 +89,10 @@ function UserAuthForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button className="w-full" type="submit" disabled={isLoading}>
+          {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
+          {SIGNIN}
+        </Button>
       </form>
     </Form>
   );
