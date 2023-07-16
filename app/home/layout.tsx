@@ -1,8 +1,8 @@
 "use client";
+import { useLayoutEffect } from "react";
+import { useRouter } from "next/navigation";
 import SidebarNav from "@/components/SidebarNav";
 import { useGlobalContext } from "@/app/context/store";
-import { useRouter } from "next/navigation";
-import { useLayoutEffect } from "react";
 
 const sidebarNavItems: ISidebarNavItem[] = [
   {
@@ -15,11 +15,7 @@ const sidebarNavItems: ISidebarNavItem[] = [
   },
 ];
 
-export default function HomeLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function HomeLayout({ children }: { children: React.ReactNode }) {
   const { isLogin } = useGlobalContext();
   const router = useRouter();
 
@@ -43,3 +39,4 @@ export default function HomeLayout({
     </>
   );
 }
+export default HomeLayout;

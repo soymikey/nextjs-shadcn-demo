@@ -1,6 +1,6 @@
 import UserAuthForm from "@/components/UserAuthForm";
 
-export default function LoginPage() {
+function LoginPage() {
   return (
     <div className="h-screen flex flex-col justify-center items-center">
       <div className="flex flex-col space-y-2 text-center mb-8">
@@ -15,3 +15,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default LoginPage;

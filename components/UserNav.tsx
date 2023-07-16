@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { DEFAULTAVATAR } from "@/app/constants";
 import { useGlobalContext } from "@/app/context/store";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -12,7 +13,6 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useRouter } from "next/navigation";
 
 export default function UserNav() {
   const { username, setIsLogin, setUsername } = useGlobalContext();

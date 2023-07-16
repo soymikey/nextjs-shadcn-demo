@@ -1,5 +1,4 @@
 "use client";
-import UserNav from "@/components/UserNav";
 import React, { useState } from "react";
 import {
   CREATEAGENT,
@@ -7,7 +6,8 @@ import {
   EDIT,
   OFFLINE,
   ONLINE,
-} from "../constants";
+} from "@/app/constants";
+import UserNav from "@/components/UserNav";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AgentForm from "@/components/AgentForm";

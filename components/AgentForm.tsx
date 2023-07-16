@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -31,11 +33,9 @@ import {
   ONLINE,
   UPDATE,
 } from "@/app/constants";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "./ui/input";
-import Icons from "./Icons";
+
+import { Input } from "@/components/ui/input";
+import Icons from "@/components/Icons";
 
 interface AgentFormProps extends React.HTMLAttributes<HTMLDivElement> {
   buttonText: string;

@@ -1,7 +1,5 @@
 "use client";
 import React, { useLayoutEffect, useState } from "react";
-
-import Link from "next/link";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -9,16 +7,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useGlobalContext } from "@/app/context/store";
-import Icons from "./Icons";
+import Icons from "@/components/Icons";
 import { SIGNIN } from "@/app/constants";
 
 const formSchema = z.object({
@@ -32,7 +28,7 @@ const formSchema = z.object({
 
 function UserAuthForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { username, isLogin, setUsername, setIsLogin } = useGlobalContext();
+  const { isLogin, setUsername, setIsLogin } = useGlobalContext();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({

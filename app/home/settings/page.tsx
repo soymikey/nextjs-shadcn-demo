@@ -1,3 +1,5 @@
-export default function SettingsPage() {
+function SettingsPage() {
   return <main>Page Developing</main>;
 }
+
+export default SettingsPage;
