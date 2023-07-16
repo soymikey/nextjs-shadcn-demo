@@ -2,6 +2,18 @@
 import { useLayoutEffect } from "react";
 import { useGlobalContext } from "../context/store";
 import { useRouter } from "next/navigation";
+import SidebarNav from "@/components/SidebarNav";
+
+const sidebarNavItems: ISidebarNavItem[] = [
+  {
+    title: "Agents",
+    href: "/home",
+  },
+  {
+    title: "Settings",
+    href: "/home/settings",
+  },
+];
 
 export default function HomeLayout({
   children,
@@ -17,9 +29,11 @@ export default function HomeLayout({
     }
   }, [isLogin, router]);
   return (
-    <div>
-      Home layout
-      <h1>UserName:{username}</h1>
+    <div className="flex ">
+      <aside className="w-1/5">
+        <h1 className="text-4xl font-bold text-center my-8">Gopher AI</h1>
+        <SidebarNav items={sidebarNavItems} />
+      </aside>
       {children}
     </div>
   );

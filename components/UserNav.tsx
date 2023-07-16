@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import { DEFAULTAVATAR } from "@/app/constants";
 import { useGlobalContext } from "@/app/context/store";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -15,7 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
-function UserNav() {
+
+export default function UserNav() {
   const { username, setIsLogin, setUsername } = useGlobalContext();
   const router = useRouter();
 
@@ -70,5 +69,3 @@ function UserNav() {
     </DropdownMenu>
   );
 }
-
-export default UserNav;

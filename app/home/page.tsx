@@ -1,3 +1,4 @@
+"use client";
 import UserNav from "@/components/UserNav";
 import React from "react";
 
