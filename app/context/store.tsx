@@ -6,6 +6,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useLayoutEffect,
   useState,
 } from "react";
 
@@ -28,11 +29,15 @@ export const GlobalContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const initIsLogin = getItem<boolean>("isLogin") || false;
-  const initUsername = getItem<string>("username") || "";
+  const [isLogin, setIsLogin] = useState(false);
+  const [username, setUsername] = useState("");
 
-  const [isLogin, setIsLogin] = useState(initIsLogin);
-  const [username, setUsername] = useState(initUsername);
+  useLayoutEffect(() => {
+    const initIsLogin = getItem<boolean>("isLogin") || false;
+    const initUsername = getItem<string>("username") || "";
+    setIsLogin(initIsLogin);
+    setUsername(initUsername);
+  }, []);
 
   useEffect(() => {
     setItem("isLogin", isLogin);

@@ -12,8 +12,6 @@ export const setItem = (key: string, value: any): void => {
 
 // Get item from local storage
 export const getItem = <T>(key: string): T | null => {
-  if (typeof window == "undefined") return null;
-
   const item = localStorage.getItem(key);
   if (item) {
     return JSON.parse(item) as T;
